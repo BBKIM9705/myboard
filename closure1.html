@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <button class="toggle">toggle</button>
+    <div class="box" style="width: 100px; height: 100px; background: red;">
+    <script>
+        var box = document.querySelector('.box');
+        var toggleBtn = document.querySelector('.toggle');
+        //즉시 실행 함수
+        var toggle = (function(){
+            var isShow = false; //isShow --> boolean형. 원래는 리턴 후에 사라져야 하는데
+            //아래의 클로저 함수가 값을 기억할 것임.
+
+            //1. 클로저 함수를 반환
+            return function(){
+                //화면에 뭔가 보이게 하느냐 안 보이게 하느냐...
+                box.style.display = isShow ? 'block': 'none';
+                isShow = !isShow;
+            };
+        })();
+        //2. 이벤트 프로퍼티에 클로저 함수를 리턴
+        toggleBtn.onclick = toggle;
+
+    </script>
+    </div>
+</body>
+</html>

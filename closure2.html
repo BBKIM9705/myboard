@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p>클로저를 사용한 Counting</p>
+        <button id="increase">+</button>
+        <p id ="count">0</p>
+        <script>
+            var increaseBtn = document.getElementById('increase');
+            var count = document.getElementById('count');
+            
+            //즉시 실행 함수
+            var increase = (function(){
+                var counter = 0; //클로저에서 기억할 변수
+                return function(){ //클로저 함수
+                    return ++counter;
+                }
+            })();
+
+            increaseBtn.onclick = function(){
+                count.innerHTML = increase();
+            }
+        </script>
+    </body>
+</html>
